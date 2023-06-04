@@ -34,8 +34,8 @@ export default function Header() {
         setArrowActive(true);
     }
     function logout() {
-        localStorage.removeItem("auth");
-        navigate('/');
+        localStorage.removeItem("user");
+        navigate('/sign-in');
     }
     function logoutPosition() {
         const userRect = userRef.current.getBoundingClientRect();
@@ -82,7 +82,7 @@ export default function Header() {
                                 setSearchValue('');
                                 navigate(`/user-page/${profile.user_id}`);
                             }}>
-                                <img src={profile.user_photo} alt="" />
+                                <img data-test="avatar" src={profile.user_photo} alt="" />
                                 <p>{profile.username}</p>
                             </Item>
                         ))}
