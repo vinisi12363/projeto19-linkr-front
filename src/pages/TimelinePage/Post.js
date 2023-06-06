@@ -1,12 +1,7 @@
 
-import urlMetadata from "url-metadata"
 import { Post, PostContent, Loading, StyledTrash } from "./TimelineStyle"
-import { PublishContainer } from "./TimelineStyle"
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
-import { useState } from "react";
-import Modal, { ModalProvider, BaseModalBackground } from "styled-react-modal"
-import styled from "styled-components";
 
 export default function TimeLinePost({ postData }) {
     const navigate = useNavigate()
@@ -45,7 +40,7 @@ export default function TimeLinePost({ postData }) {
         }
 
         const config = { headers: { Authorization: `Bearer ${lsUser.user_token}` } }
-        axios.delete(`http://localhost:4000/delete-post/${user_id}/${id}`, config).then(sucess => console.log(sucess)).catch(fail => console.log(fail))
+        axios.delete(`${process.env.REACT_APP_RENDER_URL}/${user_id}/${id}`, config).then(sucess => console.log(sucess)).catch(fail => console.log(fail))
     }
 
     return (
